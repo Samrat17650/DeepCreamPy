@@ -5,6 +5,7 @@ import module as mm
 
 #suppress tensorflow deprecation warnings
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+tf.compat.v1.disable_eager_execution()
 
 class InpaintNN:
 
@@ -31,11 +32,11 @@ class InpaintNN:
 	def build_model(self):
 		# ------- variables
 
-		self.X = tf.placeholder(tf.float32, [self.batch_size, self.input_height, self.input_width, 3])
-		self.Y = tf.placeholder(tf.float32, [self.batch_size, self.input_height, self.input_width, 3])
+		self.X = tf.compat.v1.placeholder(tf.float32, [self.batch_size, self.input_height, self.input_width, 3])
+		self.Y = tf.compat.v1.placeholder(tf.float32, [self.batch_size, self.input_height, self.input_width, 3])
 
-		self.MASK = tf.placeholder(tf.float32, [self.batch_size, self.input_height, self.input_width, 3])
-		IT = tf.placeholder(tf.float32)
+		self.MASK = tf.compat.v1.placeholder(tf.float32, [self.batch_size, self.input_height, self.input_width, 3])
+		IT = tf.compat.v1.placeholder(tf.float32)
 
 		# ------- structure
 
@@ -67,10 +68,10 @@ class InpaintNN:
 		Loss_hat = tf.reduce_mean(tf.abs(I_co - self.Y))
 
 		A = tf.image.rgb_to_yuv((self.image_result+1)/2.0)
-		A_Y = tf.to_int32(A[:, :, :, 0:1]*255.0)
+		A_Y = tf.cast(A[:, :, :, 0:1]*255.0, dtype=tf.int32)
 
 		B = tf.image.rgb_to_yuv((self.Y+1)/2.0)
-		B_Y = tf.to_int32(B[:, :, :, 0:1]*255.0)
+		B_Y = tf.cast(B[:, :, :, 0:1]*255.0, dtype=tf.int32)
 
 		ssim = tf.reduce_mean(tf.image.ssim(A_Y, B_Y, 255.0))
 
@@ -80,30 +81,30 @@ class InpaintNN:
 
 		# --------------------- variable & optimizer
 
-		var_D = [v for v in tf.global_variables() if v.name.startswith('disc_red')]
-		var_G = [v for v in tf.global_variables() if v.name.startswith('G_en') or v.name.startswith('G_de') or v.name.startswith('CB1')]
+		var_D = [v for v in tf.compat.v1.global_variables() if v.name.startswith('disc_red')]
+		var_G = [v for v in tf.compat.v1.global_variables() if v.name.startswith('G_en') or v.name.startswith('G_de') or v.name.startswith('CB1')]
 
-		update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)
+		update_ops = tf.compat.v1.get_collection(tf.compat.v1.GraphKeys.UPDATE_OPS)
 
 		with tf.control_dependencies(update_ops):
-		    optimize_D = tf.train.AdamOptimizer(learning_rate=0.0004, beta1=0.5, beta2=0.9).minimize(Loss_D, var_list=var_D)
-		    optimize_G = tf.train.AdamOptimizer(learning_rate=0.0001, beta1=0.5, beta2=0.9).minimize(Loss_G, var_list=var_G)
+		    optimize_D = tf.compat.v1.train.AdamOptimizer(learning_rate=0.0004, beta1=0.5, beta2=0.9).minimize(Loss_D, var_list=var_D)
+		    optimize_G = tf.compat.v1.train.AdamOptimizer(learning_rate=0.0001, beta1=0.5, beta2=0.9).minimize(Loss_G, var_list=var_G)
 
-		config = tf.ConfigProto()
+		config = tf.compat.v1.ConfigProto()
 		# config.gpu_options.per_process_gpu_memory_fraction = 0.4
 		# config.gpu_options.allow_growth = False
 
-		self.sess = tf.Session(config=config)
+		self.sess = tf.compat.v1.Session(config=config)
 
-		init = tf.global_variables_initializer()
+		init = tf.compat.v1.global_variables_initializer()
 		self.sess.run(init)
-		saver = tf.train.Saver()
+		saver = tf.compat.v1.train.Saver()
 
 		if self.is_mosaic:
-			Restore = tf.train.import_meta_graph(self.mosaic_model_name)
+			Restore = tf.compat.v1.train.import_meta_graph(self.mosaic_model_name)
 			Restore.restore(self.sess, tf.train.latest_checkpoint(self.mosaic_checkpoint_name))
 		else:
-			Restore = tf.train.import_meta_graph(self.bar_model_name)
+			Restore = tf.compat.v1.train.import_meta_graph(self.bar_model_name)
 			Restore.restore(self.sess, tf.train.latest_checkpoint(self.bar_checkpoint_name))
 
 	def predict(self, censored, unused, mask):

@@ -191,7 +191,7 @@ class Decensor(QtCore.QThread):
         # self.signals.update_progress_LABEL.emit("finished", "Decensoring complete! Close this window and reopen DCP to start a new session.")
         self.signals.insertText_progressCursor.emit("\nDecensoring complete! remove decensored file before decensoring again not to overwrite")
         self.signals.update_decensorButton_Enabled.emit(True)
-        tf.reset_default_graph()
+        tf.compat.v1.reset_default_graph()
 
     def decensor_image_variations(self, ori, colored, file_name=None):
         for i in range(self.variations):

@@ -1,0 +1,191 @@
+TensorFlow 2.0 Upgrade Script
+-----------------------------
+Converted 9 files
+Detected 10 issues that require attention
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+File: DeepCreamPy/decensor.py
+--------------------------------------------------------------------------------
+DeepCreamPy/decensor.py:367:12: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+--------------------------------------------------------------------------------
+File: DeepCreamPy/ops.py
+--------------------------------------------------------------------------------
+DeepCreamPy/ops.py:12:16: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+DeepCreamPy/ops.py:13:17: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+DeepCreamPy/ops.py:165:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+DeepCreamPy/ops.py:191:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+DeepCreamPy/ops.py:192:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+DeepCreamPy/ops.py:201:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+DeepCreamPy/ops.py:202:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+DeepCreamPy/ops.py:216:13: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+DeepCreamPy/ops.py:217:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+================================================================================
+Detailed log follows:
+
+================================================================================
+================================================================================
+Input tree: 'DeepCreamPy/'
+================================================================================
+--------------------------------------------------------------------------------
+Processing file 'DeepCreamPy/model.py'
+ outputting to 'DeepCreamPy_TF2/model.py'
+--------------------------------------------------------------------------------
+
+34:11: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+35:11: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+37:14: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+38:7: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+70:8: INFO: Changed tf.to_int32 call to tf.cast(..., dtype=tf.int32).
+73:8: INFO: Changed tf.to_int32 call to tf.cast(..., dtype=tf.int32).
+83:22: INFO: Renamed 'tf.global_variables' to 'tf.compat.v1.global_variables'
+84:22: INFO: Renamed 'tf.global_variables' to 'tf.compat.v1.global_variables'
+86:15: INFO: Renamed 'tf.get_collection' to 'tf.compat.v1.get_collection'
+86:33: INFO: Renamed 'tf.GraphKeys' to 'tf.compat.v1.GraphKeys'
+89:19: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+90:19: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+92:11: INFO: Renamed 'tf.ConfigProto' to 'tf.compat.v1.ConfigProto'
+96:14: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+98:9: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+100:10: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+103:13: INFO: Renamed 'tf.train.import_meta_graph' to 'tf.compat.v1.train.import_meta_graph'
+106:13: INFO: Renamed 'tf.train.import_meta_graph' to 'tf.compat.v1.train.import_meta_graph'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'DeepCreamPy/signals.py'
+ outputting to 'DeepCreamPy_TF2/signals.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'DeepCreamPy/module.py'
+ outputting to 'DeepCreamPy_TF2/module.py'
+--------------------------------------------------------------------------------
+
+15:9: INFO: Changed tf.image.resize_nearest_neighbor call to tf.image.resize(..., method=tf.image.ResizeMethod.NEAREST_NEIGHBOR).
+20:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+22:12: INFO: Renamed 'tf.get_variable_scope' to 'tf.compat.v1.get_variable_scope'
+24:19: INFO: Renamed 'tf.get_variable_scope' to 'tf.compat.v1.get_variable_scope'
+66:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+68:12: INFO: Renamed 'tf.get_variable_scope' to 'tf.compat.v1.get_variable_scope'
+70:19: INFO: Renamed 'tf.get_variable_scope' to 'tf.compat.v1.get_variable_scope'
+86:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+89:12: INFO: Renamed 'tf.get_variable_scope' to 'tf.compat.v1.get_variable_scope'
+91:19: INFO: Renamed 'tf.get_variable_scope' to 'tf.compat.v1.get_variable_scope'
+114:13: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+119:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+122:12: INFO: Renamed 'tf.get_variable_scope' to 'tf.compat.v1.get_variable_scope'
+124:19: INFO: Renamed 'tf.get_variable_scope' to 'tf.compat.v1.get_variable_scope'
+147:13: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+152:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+155:12: INFO: Renamed 'tf.get_variable_scope' to 'tf.compat.v1.get_variable_scope'
+157:19: INFO: Renamed 'tf.get_variable_scope' to 'tf.compat.v1.get_variable_scope'
+188:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+190:15: INFO: Changed tf.image.resize_nearest_neighbor call to tf.image.resize(..., method=tf.image.ResizeMethod.NEAREST_NEIGHBOR).
+201:17: INFO: Renamed 'tf.extract_image_patches' to 'tf.image.extract_patches'
+207:17: INFO: Renamed 'tf.extract_image_patches' to 'tf.image.extract_patches'
+219:17: INFO: Added keywords to args of function 'tf.nn.conv2d'
+219:17: INFO: Renamed keyword argument for tf.nn.conv2d from filter to filters
+247:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+249:15: INFO: Changed tf.image.resize_nearest_neighbor call to tf.image.resize(..., method=tf.image.ResizeMethod.NEAREST_NEIGHBOR).
+260:17: INFO: Renamed 'tf.extract_image_patches' to 'tf.image.extract_patches'
+266:17: INFO: Renamed 'tf.extract_image_patches' to 'tf.image.extract_patches'
+280:17: INFO: Added keywords to args of function 'tf.nn.conv2d'
+280:17: INFO: Renamed keyword argument for tf.nn.conv2d from filter to filters
+283:17: INFO: Added keywords to args of function 'tf.nn.conv2d'
+283:17: INFO: Renamed keyword argument for tf.nn.conv2d from filter to filters
+287:17: INFO: Added keywords to args of function 'tf.nn.conv2d'
+287:17: INFO: Renamed keyword argument for tf.nn.conv2d from filter to filters
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'DeepCreamPy/main.py'
+ outputting to 'DeepCreamPy_TF2/main.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'DeepCreamPy/config.py'
+ outputting to 'DeepCreamPy_TF2/config.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'DeepCreamPy/decensor.py'
+ outputting to 'DeepCreamPy_TF2/decensor.py'
+--------------------------------------------------------------------------------
+
+194:8: INFO: Renamed 'tf.reset_default_graph' to 'tf.compat.v1.reset_default_graph'
+367:12: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'DeepCreamPy/file.py'
+ outputting to 'DeepCreamPy_TF2/file.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'DeepCreamPy/ops.py'
+ outputting to 'DeepCreamPy_TF2/ops.py'
+--------------------------------------------------------------------------------
+
+10:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+12:16: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+12:16: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+12:62: INFO: tf.random_normal_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+12:62: INFO: Renamed 'tf.random_normal_initializer' to 'tf.compat.v1.random_normal_initializer'
+13:17: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+13:17: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+13:64: INFO: tf.constant_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+13:64: INFO: Renamed 'tf.constant_initializer' to 'tf.compat.v1.constant_initializer'
+14:58: INFO: Renamed keyword argument for tf.nn.moments from keep_dims to keepdims
+16:14: INFO: Renamed 'tf.rsqrt' to 'tf.math.rsqrt'
+165:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+165:8: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+165:64: INFO: tf.truncated_normal_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+165:64: INFO: Renamed 'tf.truncated_normal_initializer' to 'tf.compat.v1.truncated_normal_initializer'
+191:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+191:8: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+192:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+192:8: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+192:73: INFO: tf.constant_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+192:73: INFO: Renamed 'tf.constant_initializer' to 'tf.compat.v1.constant_initializer'
+194:34: INFO: Renamed keyword argument for tf.nn.conv2d from filter to filters
+201:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+201:8: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+202:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+202:8: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+202:73: INFO: tf.constant_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+202:73: INFO: Renamed 'tf.constant_initializer' to 'tf.compat.v1.constant_initializer'
+204:34: INFO: Renamed keyword argument for tf.nn.conv2d from filter to filters
+216:13: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+216:13: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+217:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+217:8: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+217:74: INFO: tf.constant_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+217:74: INFO: Renamed 'tf.constant_initializer' to 'tf.compat.v1.constant_initializer'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'DeepCreamPy/libs/utils.py'
+ outputting to 'DeepCreamPy_TF2/libs/utils.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
