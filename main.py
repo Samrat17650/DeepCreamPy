@@ -35,7 +35,7 @@ class MainWindow(QWidget):
 
 		#Tutorial
 		self.tutorialLabel = QLabel()
-		self.tutorialLabel.setText("Welcome to DeepCreamPy!\n\nIf you're new to DCP, please read the README.\nThis program does nothing without the proper setup of your images.\n\nReport any bugs you encounter to me on Github or Twitter @deeppomf.")
+		self.tutorialLabel.setText("Welcome to DeepCreamPy!\n\nIf you're new to DCP, please read the README.\nThis program does nothing without the proper setup of your images.\n\nReport any bugs you encounter to us on Github @Deepshift/DeepCreamPy")
 		self.tutorialLabel.setAlignment(Qt.AlignCenter)
 		self.tutorialLabel.setFont(QFont('Sans Serif', 13))
 
@@ -106,7 +106,7 @@ class MainWindow(QWidget):
 		#window size settings
 		self.resize(900, 600)
 		self.center()
-		self.setWindowTitle('DeepCreamPy v2.2.0-beta')
+		self.setWindowTitle('DeepCreamPy v2.3.0')
 		self.show()
 
 	def load_model(self):
