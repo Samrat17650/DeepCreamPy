@@ -87,8 +87,8 @@ class InpaintNN:
 		update_ops = tf.compat.v1.get_collection(tf.compat.v1.GraphKeys.UPDATE_OPS)
 
 		with tf.control_dependencies(update_ops):
-		    optimize_D = tf.compat.v1.train.AdamOptimizer(learning_rate=0.0004, beta1=0.5, beta2=0.9).minimize(Loss_D, var_list=var_D)
-		    optimize_G = tf.compat.v1.train.AdamOptimizer(learning_rate=0.0001, beta1=0.5, beta2=0.9).minimize(Loss_G, var_list=var_G)
+			optimize_D = tf.compat.v1.train.AdamOptimizer(learning_rate=0.0004, beta1=0.5, beta2=0.9).minimize(Loss_D, var_list=var_D)
+			optimize_G = tf.compat.v1.train.AdamOptimizer(learning_rate=0.0001, beta1=0.5, beta2=0.9).minimize(Loss_G, var_list=var_G)
 
 		config = tf.compat.v1.ConfigProto()
 		# config.gpu_options.per_process_gpu_memory_fraction = 0.4

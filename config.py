@@ -1,21 +1,21 @@
 import argparse
 
 def str2floatarr(v):
-    if type(v) == str:
-        try:
-            return [float(v) for v in v.split(',')]
-        except:
-            raise argparse.ArgumentTypeError('Integers separated by commas expected.')
-    else:
-        raise argparse.ArgumentTypeError('Integers separated by commas expected.')
+	if type(v) == str:
+		try:
+			return [float(v) for v in v.split(',')]
+		except:
+			raise argparse.ArgumentTypeError('Integers separated by commas expected.')
+	else:
+		raise argparse.ArgumentTypeError('Integers separated by commas expected.')
 
 def str2bool(v):
-    if v.lower() in ('yes', 'true', 't', 'y', '1', True):
-        return True
-    elif v.lower() in ('no', 'false', 'f', 'n', '0', False):
-        return False
-    else:
-        raise argparse.ArgumentTypeError('Boolean value expected.')
+	if v.lower() in ('yes', 'true', 't', 'y', '1', True):
+		return True
+	elif v.lower() in ('no', 'false', 'f', 'n', '0', False):
+		return False
+	else:
+		raise argparse.ArgumentTypeError('Boolean value expected.')
 
 def get_args():
 	parser = argparse.ArgumentParser(description='')

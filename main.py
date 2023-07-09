@@ -1,9 +1,5 @@
 #!/usr/bin/python3
 
-#tooltips
-# Please read this tutorial on how to prepare your images for use with DeepCreamPy.
-# The greater the number of variations, the longer decensoring process will be.
-
 import sys, time
 from PySide6.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QGridLayout, QGroupBox, QApplication
 from PySide6.QtWidgets import QApplication, QMessageBox, QRadioButton, QPushButton, QTextEdit, QLabel
@@ -12,9 +8,6 @@ from PySide6.QtCore import Qt, QObject
 from PySide6.QtGui import QFont, QTextCursor, QAction, QGuiApplication
 from decensor import Decensor
 from signals import Signals
-
-# from decensor import Decensor
-
 # from progressWindow import ProgressWindow
 
 class MainWindow(QWidget):
@@ -33,13 +26,13 @@ class MainWindow(QWidget):
 		grid_layout.setSpacing(10)
 		self.setLayout(grid_layout)
 
-		#Tutorial
+		# Tutorial
 		self.tutorialLabel = QLabel()
 		self.tutorialLabel.setText("Welcome to DeepCreamPy!\n\nIf you're new to DCP, please read the README.\nThis program does nothing without the proper setup of your images.\n\nReport any bugs you encounter to us on Github @Deepshift/DeepCreamPy")
 		self.tutorialLabel.setAlignment(Qt.AlignCenter)
 		self.tutorialLabel.setFont(QFont('Sans Serif', 13))
 
-		#Censor type group
+		# Censor type group
 		self.censorTypeGroupBox = QGroupBox('Censor Type')
 
 		barButton = QRadioButton('Bar censor')
@@ -52,7 +45,7 @@ class MainWindow(QWidget):
 		# censorLayout.addStretch(1)
 		self.censorTypeGroupBox.setLayout(censorLayout)
 
-		#Variation count group
+		# Variation count group
 		self.variationsGroupBox = QGroupBox('Number of Decensor Variations')
 
 		var1Button = QRadioButton('1')
@@ -67,14 +60,14 @@ class MainWindow(QWidget):
 		# varLayout.addStretch(1)
 		self.variationsGroupBox.setLayout(varLayout)
 
-		#Decensor button
+		# Decensor button
 		self.decensorButton = QPushButton('Decensor Your Images')
 		self.decensorButton.clicked.connect(self.decensorClicked)
 		self.decensorButton.setSizePolicy(
-    		QSizePolicy.Preferred,
-    		QSizePolicy.Preferred)
+			QSizePolicy.Preferred,
+			QSizePolicy.Preferred)
 
-		#Progress message
+		# Progress message
 		# self.progressGroupBox = QGroupBox('Progress')
 
 		self.progressMessage = QTextEdit()
@@ -94,7 +87,7 @@ class MainWindow(QWidget):
 		self.statusBar.addWidget(self.statusLabel, 1)
 		self.statusBar.addWidget(self.progressBar, 2)
 
-		#put all groups into grid
+		# Put all groups into grid
 		# addWidget(row, column, rowSpan, columnSpan)
 		grid_layout.addWidget(self.tutorialLabel, 0, 0, 1, 2)
 		grid_layout.addWidget(self.censorTypeGroupBox, 1, 0, 1, 1)
@@ -103,14 +96,14 @@ class MainWindow(QWidget):
 		grid_layout.addWidget(self.progressMessage, 3, 0, 1, 2)
 		grid_layout.addWidget(self.statusBar, 4, 0, 1, 2)
 
-		#window size settings
+		# Window settings
 		self.resize(900, 600)
 		self.center()
 		self.setWindowTitle('DeepCreamPy v2.3.0')
 		self.show()
 
 	def load_model(self):
-		# load model to make able to decensor several times
+		# Load model to make able to decensor several times
 		self.decensorButton.setEnabled(False)
 		self.decensorButton.setText("Loading Machine Learning Model (Please Wait...)")
 		self.decensor.start()
@@ -150,7 +143,7 @@ class MainWindow(QWidget):
 		else:
 			self.decensor.is_mosaic = True
 
-		#variations count
+		# Variations count
 		variationsElements = self.variationsGroupBox.children()
 		variationsButtons = [elem for elem in variationsElements if isinstance(elem, QRadioButton)]
 		for vb in variationsButtons:
@@ -163,7 +156,7 @@ class MainWindow(QWidget):
 		self.decensor.start()
 		# decensor.decensor_all_images_in_folder()
 
-	# #centers the main window
+	# Centers the main window
 	def center(self):
 		qr = self.frameGeometry()
 		cp = QGuiApplication.primaryScreen().availableGeometry().center()
@@ -172,7 +165,7 @@ class MainWindow(QWidget):
 
 if __name__ == '__main__':
 	import os
-    # you could remove this if statement if there's no error without this
+	# you could remove this if statement if there's no error without this
 	if os.name == 'nt':
 		import PySide6
 		pyqt = os.path.dirname(PySide6.__file__)
