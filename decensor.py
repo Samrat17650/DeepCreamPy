@@ -21,8 +21,7 @@ except ImportError as e:
 	if e.__class__.__name__ == "ModuleNotFoundError":
 		print(e)
 		print("Python libraries are missing. You can install all required libraries by running in the command line (terminal)")
-		print("cpu version : pip install -r requirements-cpu.txt")
-		print("gpu version : pip install -r requirements-gpu.txt")
+		print("pip install -r requirements.txt")
 	else:
 		print("Error when importing libraries: ", e)
 	print("\nIf pip doesn't work, try update through Anaconda")
