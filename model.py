@@ -26,7 +26,7 @@ class InpaintNN:
 	def check_model_file(self):
 		if not os.path.exists(self.bar_model_name) or not os.path.exists(self.mosaic_model_name) :
 			print("\nMissing Train Model, download train model")
-			print("Read : https://github.com/deeppomf/DeepCreamPy/blob/master/docs/INSTALLATION.md#run-code-yourself \n")
+			print("Read : https://github.com/Deepshift/DeepCreamPy/blob/master/docs/INSTALLATION.md#run-code-yourself \n")
 			exit(-1)
 
 	def build_model(self):
