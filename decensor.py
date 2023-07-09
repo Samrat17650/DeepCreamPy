@@ -15,7 +15,7 @@ try:
     import numpy as np
     from PIL import Image
     import tensorflow as tf
-    from PySide2 import QtCore # for QThread
+    from PySide6 import QtCore # for QThread
 except ImportError as e:
     print("\n"+ '='*20 + " ImportError " + "=" * 20 + "\n")
     if e.__class__.__name__ == "ModuleNotFoundError":
